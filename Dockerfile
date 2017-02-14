@@ -20,4 +20,4 @@ RUN apt-get -y install openssh-server apache2
 RUN mkdir -p /var/run/sshd
 RUN echo "root:password" | chpasswd  # need a password for ssh
 
-ENTRYPOINT ["/var/cfengine/bin/docker_processes_run.sh"]
+ENTRYPOINT ["/var/cfengine/bin/docker_processes_run"]
