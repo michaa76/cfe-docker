@@ -1,7 +1,7 @@
 body common control
 {
-inputs => { "/var/cfengine/masterfiles/lib/3.5/files.cf",
-            "/var/cfengine/masterfiles/lib/3.5/common.cf",
+inputs => { "/var/cfengine/masterfiles/lib/files.cf",
+            "/var/cfengine/masterfiles/lib/common.cf",
             "ssh.cf",
             "processes.cf" };
 bundlesequence =>  { "ssh", "processes" };
