@@ -7,7 +7,7 @@ vars:
 
 
 processes:
-  "$(process_names)"
+  "^((?!\/bin\/bash).)*$(process_names)"
     comment => "Look for processes in process table",
     restart_class => canonify( "not_running_$(process_names)" );
 
