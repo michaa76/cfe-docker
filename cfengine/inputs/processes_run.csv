@@ -4,4 +4,3 @@
 # The process does not have to start in the foreground, it will be backgrounded.
 #
 # STRUCTURE: PROCESS_NAME, START_COMMAND
-# apache2, /etc/init.d/apache2 start
