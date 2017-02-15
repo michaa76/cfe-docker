@@ -1,15 +1,22 @@
 body common control
 {
-inputs => { "/var/cfengine/masterfiles/lib/files.cf",
-            "/var/cfengine/masterfiles/lib/common.cf",
-            "ssh.cf",
-            "processes.cf" };
-bundlesequence =>  { "ssh", "processes" };
-}
+  inputs => {
+    "/var/cfengine/masterfiles/lib/files.cf",
+    "/var/cfengine/masterfiles/lib/common.cf",
+    "ssh.cf",
+    "processes.cf"
+  };
 
+  bundlesequence => {
+      "ssh",
+      "processes"
+  };
+}
 
 body executor control
 {
-exec_command => "/var/cfengine/bin/cf-agent";
-schedule => { "any" };  # minute resolution
+  exec_command => "/var/cfengine/bin/cf-agent";
+  schedule => {
+      "any"
+  };  # minute resolution
 }
