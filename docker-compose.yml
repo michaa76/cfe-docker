@@ -1,0 +1,11 @@
+version: '3.1'
+
+services:
+  cfe-docker:
+    container_name: cfe-docker
+    hostname: cfe_docker
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: cfe-docker:dev
+    command: '"/usr/sbin/sshd"'
