@@ -1,8 +1,8 @@
 body common control
 {
   inputs => {
-    "/var/cfengine/masterfiles/lib/files.cf",
-    "/var/cfengine/masterfiles/lib/common.cf",
+    "$(sys.masterdir)/lib/files.cf",
+    "$(sys.masterdir)/lib/common.cf",
     "ssh.cf",
     "processes.cf"
   };
