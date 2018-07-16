@@ -1,28 +1,35 @@
 bundle agent processes
 {
 vars:
+
   "count" int => readstringarray( "ensure_running", "$(sys.workdir)/inputs/processes_run.csv", "#[^\n]*", ",\s*", 100, 10000 );
   "indices" slist => getindices( "ensure_running" );
   "process_names" slist => filter( "[0-9]+", "indices", "true", "true", 100 );
 
-
 processes:
+
   "^((?!\/bin\/bash).)*$(process_names)"
     comment => "Look for processes in process table",
     restart_class => canonify( "not_running_$(process_names)" );
 
-
 commands:
-  "$(ensure_running[$(process_names)][1]) 2>&1"
+
+  "$(ensure_running[$(process_names)][1]) > /dev/null < /dev/null 2>&1 &"
     comment => "Start processes that are not running and close their file descriptors",
     contain => shell,
     ifvarclass => canonify( "not_running_$(process_names)" );
-}
 
+reports:
+
+  cfengine_3::
+
+   "$(sys.date) $(ensure_running[$(process_names)][1])"
+     report_to_file => "/var/log/cf3.promise_$(this.bundle).log";
+}
 
 body contain shell
 {
-    useshell => "useshell";
-    no_output => "true";
-    exec_timeout => "60";
+  useshell => "useshell";
+  no_output => "true";
+  exec_timeout => "60";
 }
