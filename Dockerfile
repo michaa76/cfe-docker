@@ -3,7 +3,7 @@ MAINTAINER Eystein Måløy Stenberg <eytein.stenberg@gmail.com>
 
 RUN apt-get update -qq
 
-RUN apt-get -y install wget lsb-release unzip apt-transport-https vim htop iotop
+RUN apt-get -y install gnupg2 wget lsb-release unzip apt-transport-https vim htop iotop
 
 # install latest CFEngine
 # https://cfengine.com/product/community/cfengine-linux-distros/
