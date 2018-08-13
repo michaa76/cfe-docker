@@ -8,4 +8,4 @@ services:
       context: .
       dockerfile: ./Dockerfile
     image: cfe-docker:dev
-    command: '"/usr/sbin/sshd"'
+    command: '"/usr/sbin/sshd" "/etc/init.d/apache2 start"'
